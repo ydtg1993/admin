@@ -7,7 +7,6 @@
  */
 
 namespace App\Http\Controllers;
-use DenDroGram\Controller\AdjacencyList;
 use DenDroGram\Controller\DenDroGram;
 use DenDroGram\Controller\NestedSet;
 
@@ -16,17 +15,8 @@ use DenDroGram\Controller\NestedSet;
  * Class Category
  * @package App\Http\Controllers
  */
-class TreeView extends Controller
+class Classify extends Controller
 {
-    /**
-     * 目录结构
-     */
-    public function catalog()
-    {
-        config(['dendrogram.form_action'=>url('operateCatalog')]);
-        self::$data['tree_view'] = (new DenDroGram(AdjacencyList::class))->buildTree(1);
-        return view('tree/catalog',self::$data);
-    }
     /**
      * 根茎状结构
      */
@@ -36,15 +26,7 @@ class TreeView extends Controller
         self::$data['tree_view'] = (new DenDroGram(NestedSet::class))->buildTree(1);
         return view('tree/rhizome',self::$data);
     }
-    /**
-     * 目录结构树 节点操作方法
-     */
-    public function operateCatalog()
-    {
-        $action = self::$REQUEST->input('action');
-        $data = self::$REQUEST->input('data');
-        (new DenDroGram(AdjacencyList::class))->operateNode($action,$data);
-    }
+
     /**
      * 根茎结构树 节点操作方法
      */

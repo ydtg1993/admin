@@ -14,5 +14,8 @@ return [
     //视图默认以展开形式
     'expand' => true,
     //操作节点url *路由POST方式请求
-    'form_action' => ''
+    'form_action' => '',
+
+    'adjacency_table'=>'dendrogram_adjacency',
+    'nested_table'=>'classify'
 ];

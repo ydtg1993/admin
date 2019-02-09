@@ -127,10 +127,11 @@ class Auth extends Controller
             }
             $p_data['exists'] = true;
             array_unshift($list[$class_name], $p_data);
+            $permission_infos[quadraticArrayGetIndex($permission_infos, ['controller' => $class_name, 'p_id' => 0])] = $p_data;
         }
         //自动清除
         foreach ($permission_infos as $permission_info) {
-            if (!isset($permission_info['exists']) && $permission_info['p_id']) {
+            if (!isset($permission_info['exists'])) {
                 PermissionsModel::delInfoWhere(['id' => $permission_info['id']]);
             }
         }

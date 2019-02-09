@@ -33,8 +33,6 @@ $router->group(['middleware' => 'CheckAdminLogin'], function () use ($router) {
     $router->post('Auth.operateUser', 'Auth@operateUser');
     $router->post('Auth.operateRole', 'Auth@operateRole');
 
-    $router->get('TreeView.catalog', 'TreeView@catalog');
-    $router->post('operateCatalog', 'TreeView@operateCatalog');
-    $router->get('TreeView.rhizome', 'TreeView@rhizome');
-    $router->post('operateRhizome', 'TreeView@operateRhizome');
+    $router->get('rhizome', 'Classify@rhizome');
+    $router->post('operateRhizome', 'Classify@operateRhizome');
 });
