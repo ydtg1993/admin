@@ -16,6 +16,6 @@ return [
     //操作节点url *路由POST方式请求
     'form_action' => '',
 
-    'adjacency_table'=>'dendrogram_adjacency',
+    'adjacency_table'=>'tags',
     'nested_table'=>'classify'
 ];

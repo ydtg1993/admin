@@ -7,6 +7,7 @@
  */
 
 namespace App\Http\Controllers;
+use DenDroGram\Controller\AdjacencyList;
 use DenDroGram\Controller\DenDroGram;
 use DenDroGram\Controller\NestedSet;
 
@@ -17,6 +18,20 @@ use DenDroGram\Controller\NestedSet;
  */
 class Classify extends Controller
 {
+    public function catalog()
+    {
+        config(['dendrogram.form_action'=>url('operateCatalog')]);
+        self::$data['tree_view'] = (new DenDroGram(AdjacencyList::class))->buildTree(1);
+        return view('tree/catalog',self::$data);
+    }
+
+    public function operateCatalog()
+    {
+        $action = self::$REQUEST->input('action');
+        $data = self::$REQUEST->input('data');
+        (new DenDroGram(AdjacencyList::class))->operateNode($action,$data);
+    }
+
     /**
      * 根茎状结构
      */
