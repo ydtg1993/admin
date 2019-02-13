@@ -37,4 +37,8 @@ $router->group(['middleware' => 'CheckAdminLogin'], function () use ($router) {
     $router->post('operateCatalog', 'Classify@operateCatalog');
     $router->get('rhizome', 'Classify@rhizome');
     $router->post('operateRhizome', 'Classify@operateRhizome');
+
+    $router->get('source','Source@index');
+    $router->get('source.detail','Source@detail');
+    $router->match(['get','post'],'source.add', 'Source@add');
 });

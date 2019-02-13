@@ -47,12 +47,15 @@ class Menu
                 $nav_info = [
                     'id' => $permission['id'],
                     'name' => $permission['name'] ? $permission['name'] : $permission['controller'],
+                    'sort' => $permission['sort'],
                     'navs' => []
                 ];
                 $p_navs[] = $nav_info;
                 unset($permissions[$k]);
             }
         }
+        $order_by = array_column($p_navs,'sort');
+        array_multisort($order_by,SORT_DESC,$p_navs);
 
         foreach ($p_navs as &$p_nav) {
             $p_id = $p_nav['id'];
